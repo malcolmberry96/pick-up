@@ -14,6 +14,40 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    user_Type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isLowercase: true,
+        isIn: [["driver", "client", "dispatch"]],
+        msg: "User type must be driver, client, or dispatch."
+      }
+    },
+    first_Name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isLowercase: true,
+        isAlpha: true,
+        msg: "First name may only include letters."
+      }
+    },
+    last_Name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isLowercase: true,
+        isAlpha: true,
+        msg: "Last name may only include letters."
+      }
+    },
+    phone_Number: {
+      type: DataTypes.STRING,
+      validate: {
+        is: ["\\d{3}-\\d{3}-\\d{4}", 'D'],
+        msg: "Input must be a valid phone number in the format XXX-XXX-XXXX"
+      }
     }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
