@@ -15,38 +15,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    user_Type: {
+    user_type: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isLowercase: true,
         isIn: [["driver", "client", "dispatch"]],
         msg: "User type must be driver, client, or dispatch."
-      }
-    },
-    first_Name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isLowercase: true,
-        isAlpha: true,
-        msg: "First name may only include letters."
-      }
-    },
-    last_Name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isLowercase: true,
-        isAlpha: true,
-        msg: "Last name may only include letters."
-      }
-    },
-    phone_Number: {
-      type: DataTypes.STRING,
-      validate: {
-        is: ["\\d{3}-\\d{3}-\\d{4}", 'D'],
-        msg: "Input must be a valid phone number in the format XXX-XXX-XXXX"
       }
     }
   });
@@ -59,5 +34,7 @@ module.exports = function(sequelize, DataTypes) {
   User.hook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
+
+
   return User;
 };
