@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
+import {Route, Link} from "react-router-dom";
 import logo from './logo.png';
 import './App.css';
+
+//page imports
+import ClientOrder from "./pages/ClientOrder";
+import DispatchDrivers from "./pages/DispatchDrivers";
+import DispatchOverview from "./pages/DispatchOverview";
+import DispatchVehicles from "./pages/DispatchVehicles";
+import DriverOrder from "./pages/DriverOrder";
+import DriverOverview from "./pages/DriverOverview";
+import DriverSignup from "./pages/DriverSignup";
+import PickupHome from "./pages/PickupHome";
+import UserLogin from "./pages/UserLogin";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Route path="/" component={PickupHome}/>
+        <Route path="/signup" component={DriverSignup}/>
+        <Route path="/login" component={UserLogin}/>
+        <Route path="/dispatch" component={DispatchOverview}/>
+        <Route path="/driver" component={DriverOverview}/>
+        <Route path="/dispatch/vehicles" component={DispatchVehicles}/>
+        <Route path="/dipatch/drivers" component={DispatchDrivers}/>
+        <Route path="/driver/order:id" component={DriverOrder}/>
       </div>
     );
   }
