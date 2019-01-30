@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Route, Link} from "react-router-dom";
-import logo from './logo.png';
+import {Route} from "react-router-dom"; 
 import './App.css';
 
 //page imports
@@ -26,6 +25,7 @@ class App extends Component {
         <Route path="/dispatch/vehicles" component={DispatchVehicles}/>
         <Route path="/dipatch/drivers" component={DispatchDrivers}/>
         <Route path="/driver/order:id" component={DriverOrder}/>
+        <Route path="/submit-order" component={ClientOrder}/>
       </div>
     );
   }
