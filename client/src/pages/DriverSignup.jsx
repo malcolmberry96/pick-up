@@ -9,7 +9,7 @@ class DriverSignup extends Component {
         vehicleYear: "",
         password: "",
         vehicleColor: "",
-        liscencePlate: "",
+        licencePlate: "",
         phoneNumber: "",
         email: ""
       };

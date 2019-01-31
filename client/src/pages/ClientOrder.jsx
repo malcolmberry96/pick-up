@@ -55,10 +55,20 @@ class ClientOrder extends Component {
                 type="text"
                 placeholder="Drop-off Location"
               />
-
-             
-            
-            
+              <input 
+                value={this.state.vehicleRequirement}
+                name="vehicleRequirement"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Vehicle Requirement"
+              />
+              <input 
+                value={this.state.vehicleRequirement}
+                name="loadDescription"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Load Description"
+              />
               <button onClick={this.handleFormSubmit}>Submit</button>
             </form>
           </div>
