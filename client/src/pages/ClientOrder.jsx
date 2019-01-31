@@ -3,15 +3,10 @@ import React, { Component } from "react";
 class ClientOrder extends Component {
 
     state = {
-        firstName: "",
-        lastName: "",
-        vehicleModel: "",
-        vehicleYear: "",
-        password: "",
-        vehicleColor: "",
-        liscencePlate: "",
-        phoneNumber: "",
-        email: ""
+        startLocation: "",
+        endLocation: "",
+        loadDescritpion: "",
+        vehicleRequirement: ""
       };
     
       handleInputChange = event => {
@@ -31,16 +26,10 @@ class ClientOrder extends Component {
         // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
         //alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
         this.setState({
-          firstName: "",
-          lastName: "",
-          username: "",
-          vehicleModel: "",
-          vehicleYear: "",
-          password:"",
-          vehicleColor:"",
-          licencePlate: "",
-          phoneNumber: "",
-          email: ""
+         startLocation: "",
+         endLocation: "",
+         loadDescritpion: "",
+         vehicleRequirement: ""
         });
       };
     
@@ -53,75 +42,23 @@ class ClientOrder extends Component {
             </p>
             <form className="form">
               <input
-                value={this.state.firstName}
-                name="firstName"
+                value={this.state.startLocation}
+                name="startLocation"
                 onChange={this.handleInputChange}
                 type="text"
-                placeholder="First Name"
+                placeholder="Pick-Up Location"
               />
               <input
-                value={this.state.lastName}
-                name="lastName"
+                value={this.state.endLocation}
+                name="endLocation"
                 onChange={this.handleInputChange}
                 type="text"
-                placeholder="Last Name"
+                placeholder="Drop-off Location"
               />
-              <input 
-               value={this.state.email}
-               name="email"
-               onChange={this.handleInputchange}
-               type="email"
-               placeholder="Email"
-             />
-              <input
-                value={this.state.username}
-                name="username"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Username"
-              />
-              <input
-                value={this.state.password}
-                name="password"
-                onChange={this.handleInputChange}
-                type="password"
-                placeholder="Password"
-                />
-              <input 
-                value={this.state.phoneNumber}
-                name="phoneNumber"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Phone Number"
-                />
-              <input 
-                value={this.state.vehicleModel}
-                name="vehicleModel"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Vehicle Model"
-                />
-             <input 
-                value={this.state.vehicleYear}
-                name="vehicleYear"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Vehicle Year"
-                />
-             <input
-                value={this.state.color}
-                name="vehicleColor"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Color"
-                />
-             <input 
-                value={this.state.licencePlate}
-                name="licencePlate"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Licence Plate #"
-                />
+
+             
+            
+            
               <button onClick={this.handleFormSubmit}>Submit</button>
             </form>
           </div>
