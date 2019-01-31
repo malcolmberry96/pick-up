@@ -26,7 +26,9 @@ module.export = (sequelize, DataTypes) => {
             }
         }
     });
+    //association definitions
+    Client.hasOne(db.User, {as: "client", foreignKey: "client_id"});
+    Client.hasMany(db.Order);
 
     return Client;
 }
-Client.hasOne(db.User);

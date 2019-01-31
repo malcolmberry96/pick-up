@@ -26,7 +26,16 @@ module.export = (sequelize, DataTypes) => {
             }
         }
     });
+    //association definitions
+    Driver.Vehicle = Driver.hasOne(
+        db.Vehicle,
+        {
+            as: "vehicle",
+            foreignKey: "vehicle_id"
+        }
+    );
+    Driver.hasOne(db.User, {as: "db.", foreignKey: "driver_id"});
+    Driver.hasMany(db.Order);
 
     return Driver;
 }
-Driver.hasOne(db.User);
