@@ -1,5 +1,5 @@
-module.export = (sequelize, DataTypes) => {
-    const Vehicle = sequelize.define("vehicle", {
+module.exports = (sequelize, DataTypes) => {
+    const Vehicle = sequelize.define("Vehicle", {
         make: {
             type: DataTypes.STRING,
             allowNull: false
@@ -9,11 +9,11 @@ module.export = (sequelize, DataTypes) => {
             allowNull: false
         },
         vehicle_year: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 isNumeric: true,
-                is: ["\\d{4}", 'D'],
+                is: ["\\d{4}$"],
             }
         },
         color: {
@@ -27,8 +27,17 @@ module.export = (sequelize, DataTypes) => {
             }
         }
     });
-    //association definitions
-    Vehicle.hasOne(db.Driver);
+
+    // //association definitions
+    Vehicle.associate = (models) => {
+        Vehicle.Driver = Vehicle.hasOne(
+            models.Driver,
+            {
+                as: "driver",
+                foreignKey: "vehicle_id"
+            }
+        );
+    };
     
     return Vehicle;
-}
+};
