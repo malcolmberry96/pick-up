@@ -27,8 +27,23 @@ require("./routes/api-routes.js")(app);
 require("./routes/sockets.js")(io, app);
 
 // Syncing our database and logging a message to the user upon success
-// db.sequelize.sync().then(function() {
+db.sequelize.sync().then(function() {
   http.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
+});
+
+// db.Vehicle.create({
+//   make: "Toyota",
+//   model: "Camry",
+//   vehicle_year: 2010,
+//   color: "black",
+//   license_plate: "abc1234",
+//   driver: {
+//     first_name: "Pedro",
+//     last_name: "Galan",
+//     phone_number: "123-123-1234"
+//   }
+// },{
+//   include: [db.Vehicle.Driver]
 // });

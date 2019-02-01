@@ -1,7 +1,7 @@
-module.export = (sequelize, DataTypes) => {
-    const Order = sequelize.define("order", {
+module.exports = (sequelize, DataTypes) => {
+    const Order = sequelize.define("Order", {
         start_location: {
-            type: DataTylpes.JSON,
+            type: DataTypes.JSON,
             allowNull: false
         },
         end_location: {
@@ -21,11 +21,31 @@ module.export = (sequelize, DataTypes) => {
             allowNull: false,
             default: "pending",
             validate: {
-                isIn: [["pending", "enroute", "delayed", "completed"]],
-                msg: "Order status must be pending, enroute, delayed, or complete"
+                isIn: {
+                    args: [["pending", "enroute", "delayed", "completed"]],
+                    msg: "Order status must be pending, enroute, delayed, or complete"
+                }
             }
         }
     });
-    
+
+    //association definitions
+    Order.associate = (models) => {
+        Order.Client = Order.belongsTo(
+            models.Client,
+            {
+                as: "client",
+                foreignKey: "client_id"
+            }
+        );
+        Order.Driver = Order.belongsTo(
+            models.Driver,
+            {
+                as: "driver",
+                foreignKey: "driver_id"
+            }
+        );
+    };
+
     return Order;
-}
+};

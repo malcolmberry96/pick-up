@@ -1,41 +1,44 @@
-module.export = (sequelize, DataTypes) => {
-    const Driver = sequelize.define("driver", {
+module.exports = (sequelize, DataTypes) => {
+    const Driver = sequelize.define("Driver", {
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isLowercase: true,
-                isAlpha: true,
-                msg: "First name may only include letters."
+                isAlpha: {
+                    msg: "First name may only include letters."
+                }
             }
         },
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isLowercase: true,
-                isAlpha: true,
-                msg: "Last name may only include letters."
+                isAlpha: {
+                    msg: "Last name may only include letters."
+                }
             }
         },
         phone_number: {
             type: DataTypes.STRING,
             validate: {
-                is: ["\\d{3}-\\d{3}-\\d{4}", 'D'],
-                msg: "Input must be a valid phone number in the format XXX-XXX-XXXX"
+                is: {
+                    args: ["\\d{3}-\\d{3}-\\d{4}$"],
+                    msg: "Input must be a valid phone number in the format XXX-XXX-XXXX"
+                }
             }
         }
     });
-    //association definitions
-    Driver.Vehicle = Driver.hasOne(
-        db.Vehicle,
-        {
-            as: "vehicle",
-            foreignKey: "vehicle_id"
-        }
-    );
-    Driver.hasOne(db.User, {as: "db.", foreignKey: "driver_id"});
-    Driver.hasMany(db.Order);
+
+    // //association definitions
+    // Driver.associate = (models) => {
+    //     Driver.hasMany(
+    //         models.Order,
+    //         {
+    //             as: "order",
+    //             foreignKey: "driver_id"
+    //         }
+    //     );
+    // };
 
     return Driver;
-}
+};
