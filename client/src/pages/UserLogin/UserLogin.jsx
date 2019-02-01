@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 
-class ClientOrder extends Component {
+
+class UserLogin extends Component {
 
     state = {
-        startLocation: "",
-        endLocation: "",
-        loadDescritpion: "",
-        vehicleRequirement: ""
+        firstName: "",
+        lastName: "",
+        username: "",
+        email: "",
+        password: "",
+        phoneNumber: ""
       };
     
       handleInputChange = event => {
@@ -26,10 +29,11 @@ class ClientOrder extends Component {
         // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
         //alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
         this.setState({
-         startLocation: "",
-         endLocation: "",
-         loadDescritpion: "",
-         vehicleRequirement: ""
+          firstName: "",
+          lastName: "",
+          username: "",
+          password:"",
+          phoneNumber: ""
         });
       };
     
@@ -42,42 +46,52 @@ class ClientOrder extends Component {
             </p>
             <form className="form">
               <input
-                value={this.state.startLocation}
-                name="startLocation"
+                value={this.state.firstName}
+                name="firstName"
                 onChange={this.handleInputChange}
                 type="text"
-                placeholder="Pick-Up Location"
+                placeholder="First Name"
               />
               <input
-                value={this.state.endLocation}
-                name="endLocation"
+                value={this.state.lastName}
+                name="lastName"
                 onChange={this.handleInputChange}
                 type="text"
-                placeholder="Drop-off Location"
+                placeholder="Last Name"
+              />
+              <input
+                value={this.state.username}
+                name="username"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Username"
               />
               <input 
-                value={this.state.vehicleRequirement}
-                name="vehicleRequirement"
+                value={this.state.email}
+                name="email"
                 onChange={this.handleInputChange}
                 type="text"
-                placeholder="Vehicle Requirement"
+                placeholder="Email"
               />
+              <input
+                value={this.state.password}
+                name="password"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Password"
+                />
               <input 
-                value={this.state.vehicleRequirement}
-                name="loadDescription"
+                value={this.state.phoneNumber}
+                name="phoneNumber"
                 onChange={this.handleInputChange}
                 type="text"
-                placeholder="Load Description"
-              />
+                placeholder="Phone Number"
+                />
               <button onClick={this.handleFormSubmit}>Submit</button>
             </form>
           </div>
         );
       }
-
-
-
 }
 
-
-export default ClientOrder;
+export default UserLogin;
