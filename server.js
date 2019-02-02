@@ -1,8 +1,8 @@
 // setting up express app with http server for socket io setup
 const express = require("express");
 const app = express();
-const http = require("http").Server(app);
-const io = require("socket.io")(http);
+// const http = require("http").Server(app);
+// const io = require("socket.io")(http);
 
 //passport dependencies
 const session = require("express-session");
@@ -24,11 +24,11 @@ app.use(passport.session());
 // Requiring our routes
 // require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
-require("./routes/sockets.js")(io, app);
+// require("./routes/sockets.js")(io, app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
-  http.listen(PORT, function() {
+  app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
