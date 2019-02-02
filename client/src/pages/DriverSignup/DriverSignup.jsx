@@ -1,14 +1,21 @@
 import React, { Component } from "react";
+import "./style.css";
+import {Button} from 'react-materialize';
+import {Input} from 'react-materialize';
+import {Row} from 'react-materialize';
 
-class UserLogin extends Component {
+class DriverSignup extends Component {
 
     state = {
         firstName: "",
         lastName: "",
-        username: "",
-        email: "",
+        vehicleModel: "",
+        vehicleYear: "",
         password: "",
-        phoneNumber: ""
+        vehicleColor: "",
+        licencePlate: "",
+        phoneNumber: "",
+        email: ""
       };
     
       handleInputChange = event => {
@@ -31,8 +38,13 @@ class UserLogin extends Component {
           firstName: "",
           lastName: "",
           username: "",
+          vehicleModel: "",
+          vehicleYear: "",
           password:"",
-          phoneNumber: ""
+          vehicleColor:"",
+          licencePlate: "",
+          phoneNumber: "",
+          email: ""
         });
       };
     
@@ -40,57 +52,92 @@ class UserLogin extends Component {
         // Notice how each input has a `value`, `name`, and `onChange` prop
         return (
           <div>
-            <p>
+           {/* <p>
               Hello {this.state.firstName} {this.state.lastName}
-            </p>
+           </p> */}
+          
+           <p> Drivers Sign up here</p>
             <form className="form">
-              <input
+            <Row>
+              <Input
                 value={this.state.firstName}
                 name="firstName"
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="First Name"
               />
-              <input
+              <Input
                 value={this.state.lastName}
                 name="lastName"
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Last Name"
               />
-              <input
+              </Row>
+              <Input 
+               value={this.state.email}
+               name="email"
+               onChange={this.handleInputchange}
+               type="email"
+               placeholder="Email"
+             />
+             <Row>
+              <Input
                 value={this.state.username}
                 name="username"
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Username"
               />
-              <input 
-                value={this.state.email}
-                name="email"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Email"
-              />
-              <input
+              <Input
                 value={this.state.password}
                 name="password"
                 onChange={this.handleInputChange}
-                type="text"
+                type="password"
                 placeholder="Password"
                 />
-              <input 
+              </Row>
+              <Input 
                 value={this.state.phoneNumber}
                 name="phoneNumber"
                 onChange={this.handleInputChange}
-                type="text"
+                type="tel"
                 placeholder="Phone Number"
                 />
-              <button onClick={this.handleFormSubmit}>Submit</button>
+              <Input 
+                value={this.state.vehicleModel}
+                name="vehicleModel"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Vehicle Model"
+                />
+             <Input
+                value={this.state.vehicleYear}
+                name="vehicleYear"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Vehicle Year"
+                />
+             <Input
+                value={this.state.color}
+                name="vehicleColor"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Color"
+                />
+             <Input 
+                value={this.state.licencePlate}
+                name="licencePlate"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Licence Plate #"
+                />
+              <Button onClick={this.handleFormSubmit}>Submit</Button>
+              
             </form>
           </div>
         );
       }
 }
 
-export default UserLogin;
+export default DriverSignup;

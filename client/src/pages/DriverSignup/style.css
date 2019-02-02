@@ -1,0 +1,28 @@
+.form{
+    text-align: center;
+    padding-top: 50px;
+    padding-right: 80px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    
+}
+
+input{
+    color: black;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+body {
+    background-color: #F0F0C9;
+}
+
+button {
+    margin-top: 10px;
+}
