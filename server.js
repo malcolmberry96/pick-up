@@ -1,6 +1,7 @@
 // setting up express app with http server for socket io setup
 const express = require("express");
 const app = express();
+const path = require("path");
 // const http = require("http").Server(app);
 // const io = require("socket.io")(http);
 
@@ -12,6 +13,7 @@ const passport = require("./config/passport");
 let PORT = process.env.PORT || 8080;
 const db = require("./models");
 
+app.use(express.static(path.join(__dirname, 'client/build')));
 // Creating express app and configuring middleware needed for authentication
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -23,15 +25,22 @@ app.use(passport.session());
 
 // Requiring our routes
 // require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+// require("./routes/api-routes.js")(app);
 // require("./routes/sockets.js")(io, app);
 
+// client signup route
+    app.post("/client-signup", (req, res) => {
+        console.log("inside app.post for client signup");
+        console.log(JSON.stringify(req));
+        console.log(JSON.stringify(req.newClient));
+    });
+
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
+// db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
-});
+// });
 
 //how to add order to db
 // db.Order.bulkCreate([

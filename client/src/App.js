@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Route} from "react-router-dom"; 
-import './App.css';
+import {Route, Switch} from "react-router-dom"; 
 
 //page imports
 import ClientOrder from "./pages/ClientOrder";
@@ -17,7 +16,7 @@ import UserLogin from "./pages/UserLogin";
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <Switch>
         <Route exact path="/" component={PickupHome}/>
         <Route path="/signup/driver" component={DriverSignup}/>
         <Route path="/signup/client" component={ClientSignup}/>
@@ -28,7 +27,7 @@ class App extends Component {
         <Route exact path="/dispatch/drivers" component={DispatchDrivers}/>
         <Route path="/driver/order:id" component={DriverOrder}/>
         <Route path="/submit-order" component={ClientOrder}/>
-      </div>
+      </Switch>
     );
   }
 }
