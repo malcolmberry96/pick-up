@@ -19,7 +19,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isLowercase: true,
+        isLowercase: {
+          msg: "User type must be in lowercase."
+        },
         isIn: {
           args: [["driver", "client", "dispatch"]],
           msg: "User type must be driver, client, or dispatch."
@@ -36,24 +38,6 @@ module.exports = function(sequelize, DataTypes) {
   User.hook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
-
-  //define associations
-  User.associate = (models) => {
-    User.Client = User.hasOne(
-      models.Client,
-      {
-        as: "client",
-        foreignKey: "user_id"
-      }
-    );
-    User.Driver = User.hasOne(
-      models.Driver,
-      {
-        as: "driver",
-        foreignKey: "user_id"
-      }
-    );
-  };
 
   return User;
 };
