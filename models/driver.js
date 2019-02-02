@@ -28,17 +28,24 @@ module.exports = (sequelize, DataTypes) => {
             }
         }
     });
-
-    // //association definitions
-    // Driver.associate = (models) => {
-    //     Driver.hasMany(
-    //         models.Order,
-    //         {
-    //             as: "order",
-    //             foreignKey: "driver_id"
-    //         }
-    //     );
-    // };
+    
+    //define associations
+    Driver.associate = (models) => {
+        Driver.User = Driver.belongsTo(
+        models.User,
+            {
+                as: "user",
+                foreignKey: "user_id"
+            }
+        );
+        Driver.Vehicle = Driver.belongsTo(
+            models.Vehicle,
+            {
+                as: "vehicle",
+                foreignKey: "vehicle_id"
+            }
+        );
+    };
 
     return Driver;
 };

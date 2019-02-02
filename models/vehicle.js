@@ -23,7 +23,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isAlphanumeric: true
+                isAlphanumeric: {
+                    msg: "License plate may only include letters and numbers."
+                }
             }
         }
     });

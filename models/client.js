@@ -29,16 +29,16 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    // //association definitions
-    // Client.associate = (models) => {
-    //     Client.hasMany(
-    //         models.Order,
-    //         {
-    //             as: "order",
-    //             foreignKey: "client_id"
-    //         }
-    //     );
-    // };
+        //define associations
+    Client.associate = (models) => {
+        Client.User = Client.belongsTo(
+        models.User,
+            {
+                as: "user",
+                foreignKey: "user_id"
+            }
+        );
+    };
 
     return Client;
 };
