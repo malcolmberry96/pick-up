@@ -34,7 +34,7 @@ class DriverSignup extends Component {
             password:this.state.password
         };
         axios.post(
-            "/signup/client",
+            "/api/client-signup",
             newClient
         ).then((response) => {
             // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
