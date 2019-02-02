@@ -1,11 +1,15 @@
 import React, { Component } from "react";
+import "./style.css";
+import {Button} from 'react-materialize';
+import {Input} from 'react-materialize';
+import {Row} from 'react-materialize';
 
 class ClientOrder extends Component {
 
     state = {
         startLocation: "",
         endLocation: "",
-        loadDescritpion: "",
+        loadDescription: "",
         vehicleRequirement: ""
       };
     
@@ -37,39 +41,42 @@ class ClientOrder extends Component {
         // Notice how each input has a `value`, `name`, and `onChange` prop
         return (
           <div>
-            <p>
+           {/* <p>
               Hello {this.state.firstName} {this.state.lastName}
-            </p>
+           </p>*/}
+           
             <form className="form">
-              <input
+            <Row>
+              <Input
                 value={this.state.startLocation}
                 name="startLocation"
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Pick-Up Location"
               />
-              <input
+              <Input
                 value={this.state.endLocation}
                 name="endLocation"
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Drop-off Location"
               />
-              <input 
+              </Row>
+              <Input 
                 value={this.state.vehicleRequirement}
                 name="vehicleRequirement"
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Vehicle Requirement"
               />
-              <input 
+              <Input 
                 value={this.state.vehicleRequirement}
                 name="loadDescription"
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Load Description"
               />
-              <button onClick={this.handleFormSubmit}>Submit</button>
+              <Button onClick={this.handleFormSubmit}>Submit</Button>
             </form>
           </div>
         );

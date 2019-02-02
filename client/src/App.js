@@ -22,10 +22,10 @@ class App extends Component {
         <Route path="/signup/driver" component={DriverSignup}/>
         <Route path="/signup/client" component={ClientSignup}/>
         <Route path="/login" component={UserLogin}/>
-        <Route path="/dispatch" component={DispatchOverview}/>
+        <Route exact path="/dispatch" component={DispatchOverview}/>
         <Route path="/driver" component={DriverOverview}/>
-        <Route path="/dispatch/vehicles" component={DispatchVehicles}/>
-        <Route path="/dipatch/drivers" component={DispatchDrivers}/>
+        <Route exact path="/dispatch/vehicles" component={DispatchVehicles}/>
+        <Route exact path="/dispatch/drivers" component={DispatchDrivers}/>
         <Route path="/driver/order:id" component={DriverOrder}/>
         <Route path="/submit-order" component={ClientOrder}/>
       </div>

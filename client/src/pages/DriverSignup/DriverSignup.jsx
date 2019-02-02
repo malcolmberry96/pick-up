@@ -1,5 +1,12 @@
 import React, { Component } from "react";
+<<<<<<< HEAD:client/src/pages/DriverSignup.jsx
 import axios from "axios";
+=======
+import "./style.css";
+import {Button} from 'react-materialize';
+import {Input} from 'react-materialize';
+import {Row} from 'react-materialize';
+>>>>>>> master:client/src/pages/DriverSignup/DriverSignup.jsx
 
 class DriverSignup extends Component {
 
@@ -68,6 +75,7 @@ class DriverSignup extends Component {
     render() {
         // Notice how each input has a `value`, `name`, and `onChange` prop
         return (
+<<<<<<< HEAD:client/src/pages/DriverSignup.jsx
             <div>
               <h1>Driver Signup</h1>
               <h3>{(this.state.firstName || this.state.lastName)? `Hello ${this.state.firstName} ${this.state.lastName}` : null}</h3>
@@ -165,6 +173,93 @@ class DriverSignup extends Component {
                   <button onClick={this.handleFormSubmit}>Submit</button>
               </form>
             </div>
+=======
+          <div>
+           {/* <p>
+              Hello {this.state.firstName} {this.state.lastName}
+           </p> */}
+          
+           <p> Drivers Sign up here</p>
+            <form className="form">
+            <Row>
+              <Input
+                value={this.state.firstName}
+                name="firstName"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="First Name"
+              />
+              <Input
+                value={this.state.lastName}
+                name="lastName"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Last Name"
+              />
+              </Row>
+              <Input 
+               value={this.state.email}
+               name="email"
+               onChange={this.handleInputchange}
+               type="email"
+               placeholder="Email"
+             />
+             <Row>
+              <Input
+                value={this.state.username}
+                name="username"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Username"
+              />
+              <Input
+                value={this.state.password}
+                name="password"
+                onChange={this.handleInputChange}
+                type="password"
+                placeholder="Password"
+                />
+              </Row>
+              <Input 
+                value={this.state.phoneNumber}
+                name="phoneNumber"
+                onChange={this.handleInputChange}
+                type="tel"
+                placeholder="Phone Number"
+                />
+              <Input 
+                value={this.state.vehicleModel}
+                name="vehicleModel"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Vehicle Model"
+                />
+             <Input
+                value={this.state.vehicleYear}
+                name="vehicleYear"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Vehicle Year"
+                />
+             <Input
+                value={this.state.color}
+                name="vehicleColor"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Color"
+                />
+             <Input 
+                value={this.state.licencePlate}
+                name="licencePlate"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Licence Plate #"
+                />
+              <Button onClick={this.handleFormSubmit}>Submit</Button>
+              
+            </form>
+          </div>
+>>>>>>> master:client/src/pages/DriverSignup/DriverSignup.jsx
         );
     }
 }
