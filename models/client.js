@@ -26,6 +26,15 @@ module.exports = (sequelize, DataTypes) => {
                     msg: "Input must be a valid phone number in the format XXX-XXX-XXXX"
                 }
             }
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: {
+                    msg: "Input must be an email address."
+                }
+            }
         }
     });
 

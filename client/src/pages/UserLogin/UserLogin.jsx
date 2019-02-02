@@ -1,15 +1,12 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 
 class UserLogin extends Component {
 
     state = {
-        firstName: "",
-        lastName: "",
         username: "",
-        email: "",
-        password: "",
-        phoneNumber: ""
+        password: ""
       };
     
       handleInputChange = event => {
@@ -22,43 +19,38 @@ class UserLogin extends Component {
         });
       };
     
-      handleFormSubmit = event => {
+    handleFormSubmit = event => {
         // Preventing the default behavior of the form submit (which is to refresh the page)
         event.preventDefault();
-    
-        // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
-        //alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
-        this.setState({
-          firstName: "",
-          lastName: "",
-          username: "",
-          password:"",
-          phoneNumber: ""
+        const userLogin = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        axios.post(
+            "/api/login",
+            userLogin
+        ).then((response) => {
+            // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
+            //alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
+            this.setState({
+                username: "",
+                password:""
+            });
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
         });
-      };
+    };
     
       render() {
         // Notice how each input has a `value`, `name`, and `onChange` prop
         return (
           <div>
+            <h1>Login to Pickup</h1>
             <p>
               Hello {this.state.firstName} {this.state.lastName}
             </p>
             <form className="form">
-              <input
-                value={this.state.firstName}
-                name="firstName"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="First Name"
-              />
-              <input
-                value={this.state.lastName}
-                name="lastName"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Last Name"
-              />
               <input
                 value={this.state.username}
                 name="username"
@@ -66,26 +58,12 @@ class UserLogin extends Component {
                 type="text"
                 placeholder="Username"
               />
-              <input 
-                value={this.state.email}
-                name="email"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Email"
-              />
               <input
                 value={this.state.password}
                 name="password"
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Password"
-                />
-              <input 
-                value={this.state.phoneNumber}
-                name="phoneNumber"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Phone Number"
                 />
               <button onClick={this.handleFormSubmit}>Submit</button>
             </form>
