@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
+import { Paper  }from 'material-ui/core/Paper';
+import { Typography }from 'material-ui/core/Typography';
 import { typography } from 'material-ui/styles';
 
 class GoogleMapsContainer extends React.Component {
@@ -78,5 +78,5 @@ class GoogleMapsContainer extends React.Component {
   }
 }
 export default GoogleApiWrapper({
-    api: (process.env.GOOGLE_API_KEY_GOES_HERE)
+    api: (process.env.REACT_APP_SECRET_CODE)
 })(GoogleMapsContainer)
