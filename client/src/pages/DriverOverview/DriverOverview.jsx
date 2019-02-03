@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import GoogleMapsContainer from './googlemap';
+import MapContainer from './googlemap';
 
 class DriverOverview extends Component {
     render () {
     return(
         <div>
-            <GoogleMapsContainer></GoogleMapsContainer>
+            <MapContainer></MapContainer>
         </div>
     );
 }
