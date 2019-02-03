@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
-import MapContainer from './googlemap';
+import React from "react";
+import GoogleMap from './DoctorsMap';
+import DoctorsMap from './DoctorsMap'
+import DoctorsMapContainer from './DoctorMapContainer';
 
-class DriverOverview extends Component {
-    render () {
+
+function DriverOverview() {
     return(
         <div>
-            <MapContainer></MapContainer>
+            
+            <DoctorsMapContainer>
+            <GoogleMap></GoogleMap>
+                <DoctorsMap></DoctorsMap>
+            </DoctorsMapContainer>
+            
+
         </div>
+           
     );
-}
 }
 
 export default DriverOverview;
