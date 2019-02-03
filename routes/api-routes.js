@@ -3,16 +3,32 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function(app) {
-  // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
-  // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-      // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
-      // So we're sending the user back the route to the members page because the redirect will happen on the front end
-      // They won't get this or even be able to access this page if they aren't authed
-      // res.json("/members");
-      console.log("Successfully logged-in.");
-  });
+    // Using the passport.authenticate middleware with our local strategy.
+    // If the user has valid login credentials, send them to the members page.
+    // Otherwise the user will be sent an error
+    app.post("/api/login", passport.authenticate("local"), function(req, res) {
+        // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
+        // So we're sending the user back the route to the members page because the redirect will happen on the front end
+        // They won't get this or even be able to access this page if they aren't authed
+        db.User.findOne({
+            where: {
+                username: req.body.username
+            }
+        }).then((response) => {
+            const userType = response.dataValues.user_type;
+            console.log(userType);
+            switch(userType) {
+                case "driver":
+                    return res.redirect("/driver");
+                case "clident":
+                    return res.redirect("/submit-order");
+                case "dispatch":
+                    return res.redirect("/dispatch");
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
+    });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
@@ -54,56 +70,77 @@ module.exports = function(app) {
   // });
   
     // client signup route
-    app.post("/api/client-signup", (req, res) => {
-        console.log(JSON.stringify(req));
-        console.log(JSON.stringify(req.newClient));
-        db.Client.create({
-            first_name: req.newClient.firstName,
-            last_name: req.newClient.lastName,
-            phone_number: req.newClient.phoneNumber,
-            email: req.newClient.email,
-            user: {
-                username: req.newClient.username,
-                password: req.newClient.password,
-                user_type: "client"
+    app.post("/client-signup", (req, res) => {
+        const newClient = req.body;
+        db.User.findOne({
+            where: {
+                username: newClient.username
             }
-        }, {
-            include: [db.Client.User]
         }).then((response) => {
-            console.log(response);
+            if(response === null) {
+                db.Client.create({
+                    first_name: newClient.firstName,
+                    last_name: newClient.lastName,
+                    phone_number: newClient.phoneNumber,
+                    email: newClient.email,
+                    user: {
+                        username: newClient.username,
+                        password: newClient.password,
+                        user_type: "client"
+                    }
+                }, {
+                    include: [db.Client.User]
+                }).then((_) => {
+                    res.json({success: "Your account was successfully created."});
+                }).catch((err) => {
+                    res.json({error: `There was an error creating new user: ${err}`});
+                });
+            } else {
+                res.json({warning: "That username already exists. Please choose a new username."});
+            }
         }).catch((err) => {
             console.log(err);
         });
     });
   
     // driver signup route
-    app.post("/api/driver-signup", (req, res) => {
-        console.log(JSON.stringify(req));
-        console.log(JSON.stringify(req.newDriver));
-        db.Vehicle.create({
-            make: "Toyota",
-            model: "Camry",
-            vehicle_year: 2010,
-            color: "black",
-            license_plate: "abc1234",
-            driver: {
-                first_name: req.newDriver.firstName,
-                last_name: req.newDriver.lastName,
-                phone_number: req.newDriver.phoneNumber,
-                email: req.newDriver.email,
-                user: {
-                    username: req.newDriver.username,
-                    password: req.newDriver.password,
-                    user_type: "driver"
-                }
+    app.post("/driver-signup", (req, res) => {
+        const newDriver = req.body;
+        db.User.findOne({
+            where: {
+                username: newDriver.username
             }
-        }, {
-            include: [{
-                association: db.Vehicle.Driver,
-                include: [db.Driver.User]
-            }]
         }).then((response) => {
-            console.log(response);
+            if(response === null) {
+                db.Vehicle.create({
+                    make: newDriver.vehicleMake,
+                    model: newDriver.vehicleModel,
+                    vehicle_year: newDriver.vehicleYear,
+                    color: newDriver.vehicleColor,
+                    license_plate: newDriver.licencePlate,
+                    driver: {
+                        first_name: newDriver.firstName,
+                        last_name: newDriver.lastName,
+                        phone_number: newDriver.phoneNumber,
+                        user: {
+                            username: newDriver.username,
+                            password: newDriver.password,
+                            user_type: "driver"
+                        }
+                    }
+                },{
+                    include: [{
+                        association: db.Vehicle.Driver,
+                        include: [db.Driver.User]
+                    }]
+                }).then((_) => {
+                    res.json({success: "Your account was successfully created."});
+                }).catch((err) => {
+                    res.json({error: `There was an error creating new user: ${err}`});
+                });
+            } else {
+                res.json({warning: "That username already exists. Please choose a new username."});
+            }
         }).catch((err) => {
             console.log(err);
         });
