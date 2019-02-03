@@ -55,59 +55,78 @@ module.exports = function(app) {
   
     // client signup route
     app.post("/client-signup", (req, res) => {
-        console.log("inside app.post for client signup");
-        console.log(JSON.stringify(req));
-        console.log(JSON.stringify(req.newClient));
-        // db.Client.create({
-        //     first_name: req.newClient.firstName,
-        //     last_name: req.newClient.lastName,
-        //     phone_number: req.newClient.phoneNumber,
-        //     email: req.newClient.email,
-        //     user: {
-        //         username: req.newClient.username,
-        //         password: req.newClient.password,
-        //         user_type: "client"
-        //     }
-        // }, {
-        //     include: [db.Client.User]
-        // }).then((response) => {
-        //     console.log(response);
-        // }).catch((err) => {
-        //     console.log(err);
-        // });
+        const newClient = req.body;
+        db.User.findOne({
+            where: {
+                username: newClient.username
+            }
+        }).then((response) => {
+            if(response === null) {
+                db.Client.create({
+                    first_name: newClient.firstName,
+                    last_name: newClient.lastName,
+                    phone_number: newClient.phoneNumber,
+                    email: newClient.email,
+                    user: {
+                        username: newClient.username,
+                        password: newClient.password,
+                        user_type: "client"
+                    }
+                }, {
+                    include: [db.Client.User]
+                }).then((_) => {
+                    res.json({success: "Your account was successfully created."});
+                }).catch((err) => {
+                    res.json({error: `There was an error creating new user: ${err}`});
+                });
+            } else {
+                res.json({warning: "That username already exists. Please choose a new username."});
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
     });
   
     // driver signup route
     app.post("/driver-signup", (req, res) => {
-        console.log("inside app.post for client signup");
-    //     console.log(JSON.stringify(req));
-    //     console.log(JSON.stringify(req.newDriver));
-    //     db.Vehicle.create({
-    //         make: "Toyota",
-    //         model: "Camry",
-    //         vehicle_year: 2010,
-    //         color: "black",
-    //         license_plate: "abc1234",
-    //         driver: {
-    //             first_name: req.newDriver.firstName,
-    //             last_name: req.newDriver.lastName,
-    //             phone_number: req.newDriver.phoneNumber,
-    //             email: req.newDriver.email,
-    //             user: {
-    //                 username: req.newDriver.username,
-    //                 password: req.newDriver.password,
-    //                 user_type: "driver"
-    //             }
-    //         }
-    //     }, {
-    //         include: [{
-    //             association: db.Vehicle.Driver,
-    //             include: [db.Driver.User]
-    //         }]
-    //     }).then((response) => {
-    //         console.log(response);
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     });
+        const newDriver = req.body;
+        db.User.findOne({
+            where: {
+                username: newDriver.username
+            }
+        }).then((response) => {
+            if(response === null) {
+                db.Vehicle.create({
+                    make: newDriver.vehicleMake,
+                    model: newDriver.vehicleModel,
+                    vehicle_year: newDriver.vehicleYear,
+                    color: newDriver.vehicleColor,
+                    license_plate: newDriver.licencePlate,
+                    driver: {
+                        first_name: newDriver.firstName,
+                        last_name: newDriver.lastName,
+                        phone_number: newDriver.phoneNumber,
+                        user: {
+                            username: newDriver.username,
+                            password: newDriver.password,
+                            user_type: "driver"
+                        }
+                    }
+                },{
+                    include: [{
+                        association: db.Vehicle.Driver,
+                        include: [db.Driver.User]
+                    }]
+                }).then((_) => {
+                    res.json({success: "Your account was successfully created."});
+                }).catch((err) => {
+                    res.json({error: `There was an error creating new user: ${err}`});
+                });
+            } else {
+                res.json({warning: "That username already exists. Please choose a new username."});
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
     });
 };

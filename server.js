@@ -10,37 +10,30 @@ const session = require("express-session");
 const passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
-let PORT = process.env.PORT || 8080;
+let PORT = process.env.PORT || 3001;
 const db = require("./models");
 
-app.use(express.static(path.join(__dirname, 'client/build')));
 // Creating express app and configuring middleware needed for authentication
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "client/build")));
+}
 // We need to use sessions to keep track of our user's login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our routes
-// require("./routes/html-routes.js")(app);
-// require("./routes/api-routes.js")(app);
+require("./routes/api-routes.js")(app);
 // require("./routes/sockets.js")(io, app);
 
-// client signup route
-    app.post("/client-signup", (req, res) => {
-        console.log("inside app.post for client signup");
-        console.log(JSON.stringify(req));
-        console.log(JSON.stringify(req.newClient));
-    });
-
 // Syncing our database and logging a message to the user upon success
-// db.sequelize.sync().then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
-// });
+});
 
 //how to add order to db
 // db.Order.bulkCreate([
@@ -97,18 +90,4 @@ app.use(passport.session());
 //     association: db.Vehicle.Driver,
 //     include: [db.Driver.User]
 //   }]
-// });
-
-//how to add client to db with user credentials
-// db.Client.create({
-//   first_name: "John",
-//     last_name: "Doe",
-//     phone_number: "999-999-9999",
-//     user: {
-//       username: "johnD1234",
-//       password: "password",
-//       user_type: "client"
-//     }
-// }, {
-//   include: [db.Client.User]
 // });

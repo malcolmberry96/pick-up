@@ -25,6 +25,7 @@ class ClientSignup extends Component {
     handleFormSubmit = event => {
         // Preventing the default behavior of the form submit (which is to refresh the page)
         event.preventDefault();
+        const thisState = this;
         const newClient = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -38,8 +39,7 @@ class ClientSignup extends Component {
             newClient
         ).then((response) => {
             // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
-            //alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
-            this.setState({
+            thisState.setState({
                 firstName: "",
                 lastName: "",
                 email: "",
@@ -47,9 +47,9 @@ class ClientSignup extends Component {
                 username: "",
                 password:""
             });
-            console.log(response);
+            console.log(JSON.stringify(response.data));
         }).catch((error) => {
-            console.log(error);
+            console.log(JSON.stringify(error.data));
         });;
     };
     
