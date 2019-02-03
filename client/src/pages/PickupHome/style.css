@@ -1,0 +1,49 @@
+body {
+    background-color: white;
+}
+
+.nav-wrapper {
+    background-color: #124E78
+}
+
+h3 {
+position: relative;
+text-align: left;
+font-size: 20pt;
+}
+
+p {
+margin-right: 1100px;
+}
+
+.btn-primary {
+background-color: #FF5D00;
+}
+
+.col-sm-6, col.sm-6 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.container {
+    padding: 0px;
+}
+
+.jumbotron {
+    background-color: white;
+}
+
+.img-fluid {
+    padding-top: 150px;
+    height: 400px;
+    width: auto;
+}
+
+h1 {
+    font-size: 25pt;
+}
+
+#footer {
+    text-align: center;
+}
+
