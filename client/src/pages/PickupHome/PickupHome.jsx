@@ -9,8 +9,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Form from  'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
+
 
 
 
@@ -20,10 +19,11 @@ class Pickup extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#home">Pick-Up</Navbar.Brand>
-    <Nav className="mr-auto">
+     <Navbar bg="dark" variant="dark">
+      <Navbar.Brand href="#home">Pick-Up</Navbar.Brand>
+      <Nav className="mr-auto">
       <Nav.Link href="#home">Home</Nav.Link>
+      <Nav.Link href="#login">Login</Nav.Link>
       <Nav.Link href="#features">Features</Nav.Link>
       <Nav.Link href="#pricing">About</Nav.Link>
     </Nav>
@@ -33,7 +33,7 @@ class Pickup extends Component {
       <Row>
         <Col sm={6}>
          <Jumbotron>
-           <h1>No truck? No Worries. </h1>
+           <h1>No truck? No worries. </h1>
             <h3>
             Pick-Up 
             </h3>
@@ -57,6 +57,10 @@ class Pickup extends Component {
         </Col>
       </Row>
   </Container>
+
+  <Navbar id='footer' sticky='bottom' bg='dark' variants='dark' >
+  </Navbar>
+   
 </div>
     );
     }

@@ -1,13 +1,17 @@
-import React from "react";
+import React, { Component } from 'react';
 
-function DriverOverview() {
+
+class DriverOverview extends Component {
+    render () {
     return(
         <div>
-            <h1>Driver Main Overview</h1>
+            <CurrentLocation></CurrentLocation>
+        
             <p>Map goes here.</p>
             <p>Customer order list goes here.</p>
         </div>
     );
+}
 }
 
 export default DriverOverview;
