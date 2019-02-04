@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MapContainer from './MapContainer';
-// import App from './App';
-// import {BrowserRouter as Router} from "react-router-dom";
+// import MapContainer from './MapContainer';
+import App from './App';
+import {BrowserRouter as Router} from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 // redux setup
 // import {Provider} from "react-redux";
@@ -12,10 +12,9 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     // <Provider>
-    <MapContainer />,
-    // <Router>
-    //     <App />
-    // </Router>,
+        <Router>
+            <App />
+        </Router>,
     // </Provider>,
     document.getElementById('root')
 );

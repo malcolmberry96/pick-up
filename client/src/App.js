@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Route, Switch} from "react-router-dom"; 
+// import io from "socket.io-client";
 
 //page imports
 import ClientOrder from "./pages/ClientOrder";
@@ -12,6 +13,9 @@ import DriverSignup from "./pages/DriverSignup";
 import ClientSignup from "./pages/ClientSignup";
 import PickupHome from "./pages/PickupHome";
 import UserLogin from "./pages/UserLogin";
+
+// const socket = io("http://localhost:8000");
+
 
 class App extends Component {
   render() {

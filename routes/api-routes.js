@@ -15,15 +15,19 @@ module.exports = function(app) {
                 username: req.body.username
             }
         }).then((response) => {
-            const userType = response.dataValues.user_type;
-            console.log(userType);
-            switch(userType) {
-                case "driver":
-                    return res.redirect("/driver");
-                case "clident":
-                    return res.redirect("/submit-order");
-                case "dispatch":
-                    return res.redirect("/dispatch");
+            if(response !== null) {
+                const userType = response.dataValues.user_type;
+                console.log(userType);
+                switch(userType) {
+                    case "driver":
+                        return res.json({loginType: "driver"});
+                    case "client":
+                        return res.json({loginType: "client"});
+                    case "dispatch":
+                        return res.json({loginType: "dispatch"});
+                }
+            } else {
+                return res.json({loginType: "unauthorized"});
             }
         }).catch((err) => {
             console.log(err);
@@ -68,6 +72,26 @@ module.exports = function(app) {
   //     });
   //   }
   // });
+    //order submit route
+    app.post("/submit-order", (req, res) => {
+        const newOrder = req.body;
+        console.log(newOrder);
+        // db.Order.create({
+        //     start_location: newOrder.startLocation,
+        //     end_location: newOrder.endLocation,
+        //     load_description: newOrder.loadDescritpion,
+        //     vehicle_requirement: newOrder.vehicleRequirement,
+        //     status: newOrder.status,
+        //     client_id: newOrder.clientId,
+        //     driver_id: newOrder.driverId
+        // }).then((response) => {
+        //     console.log(response);
+            // res.json({success: "New order was successfully submitted."});
+        // }).catch((error) => {
+        //     console.log(error);
+            // res.json({error: "There was an error creating submitting the new order."});
+        // });
+    });
   
     // client signup route
     app.post("/client-signup", (req, res) => {
