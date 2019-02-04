@@ -6,7 +6,7 @@ import "./style.css";
 
 class DispatchVehicles extends Component {
     render () {
-        axios.get("/dispatch-vehicles")
+        axios.get("/dispatch/dispatch-vehicles")
             .then((response) => {
                 console.log("successful");
             })
@@ -18,7 +18,7 @@ class DispatchVehicles extends Component {
             <h1>Dispatch Vehicles</h1>
             
             <Collection header="Driver Names">
-            <CollectionItem>Driver 1 {this.state.firstName}</CollectionItem>
+            <CollectionItem>Driver 1</CollectionItem>
             <CollectionItem>Driver 2</CollectionItem>
             <CollectionItem>Driver 3</CollectionItem>
             <CollectionItem>Driver 4</CollectionItem>

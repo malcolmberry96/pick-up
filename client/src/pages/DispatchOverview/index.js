@@ -3,7 +3,7 @@ import axios from "axios";
 import MapContainer from "../../components/MapContainer";
 
 function DispatchOverview() {
-    axios.get("/dispatch-overview")
+    axios.get("/dispatch/dispatch-overview")
             .then((response) => {
                 console.log("successful");
             })

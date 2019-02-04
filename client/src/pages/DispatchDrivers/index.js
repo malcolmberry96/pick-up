@@ -30,7 +30,7 @@ class DispatchDrivers extends Component {
     };
 
     render () {
-        axios.get("/dispatch-drivers")
+        axios.get("/dispatch/dispatch-drivers")
             .then((response) => {
                 console.log("successful");
             })

@@ -37,7 +37,7 @@ class ClientSignup extends Component {
             password:this.state.password
         };
         axios.post(
-            "/client-signup",
+            "api/client-signup",
             newClient
         ).then((response) => {
             thisState.setState({

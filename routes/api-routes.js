@@ -29,7 +29,7 @@ module.exports = function(app) {
                 return res.json({loginType: "unauthorized"});
             }
         }).catch((err) => {
-            console.log(err);
+            res.status(422).json({error: `${err}`});
         });
     });
 
@@ -56,7 +56,7 @@ module.exports = function(app) {
   // });
     
     // get driver overview
-    app.get("/driver:id", (req, res) => {
+    app.get("/api/driver:id", (req, res) => {
         const driverId = req.params.id;
             db.Order.findAll({
                 where: {driver_id: driverId}
@@ -69,7 +69,7 @@ module.exports = function(app) {
     });
 
     // get specific driver order
-    app.get("/driver:id&order:order", (req, res) => {
+    app.get("/api/driver:id&order:order", (req, res) => {
         const params = req.params;
             db.Order.findOne({
                 where: {
@@ -85,7 +85,7 @@ module.exports = function(app) {
     });
 
     // get dispatch overview
-    app.get("/dispatch-overview", (req, res) => {
+    app.get("/dispatch/dispatch-overview", (req, res) => {
         db.Driver.findAll()
             .then((response) => {
                 console.log(response);
@@ -105,7 +105,7 @@ module.exports = function(app) {
     });
 
     // get list of drivers
-    app.get("/dispatch-drivers", (req, res) => {
+    app.get("/dispatch/dispatch-drivers", (req, res) => {
         db.Driver.findAll()
             .then((response) => {
                 console.log(response);
@@ -117,7 +117,7 @@ module.exports = function(app) {
     });
 
     // get list of vehicles
-    app.get("/dispatch-vehicles", (req, res) => {
+    app.get("/dispatch/dispatch-vehicles", (req, res) => {
         db.Vehicle.findAll()
             .then((response) => {
                 console.log(response);
@@ -129,7 +129,7 @@ module.exports = function(app) {
     });
 
     //order submit route
-    app.post("/submit-order", (req, res) => {
+    app.post("api/submit-order", (req, res) => {
         const newOrder = req.body;
         console.log(newOrder);
         // db.Order.create({
@@ -150,7 +150,7 @@ module.exports = function(app) {
     });
   
     // client signup route
-    app.post("/client-signup", (req, res) => {
+    app.post("api/client-signup", (req, res) => {
         const newClient = req.body;
         db.User.findOne({
             where: {
@@ -185,7 +185,7 @@ module.exports = function(app) {
     });
   
     // driver signup route
-    app.post("/driver-signup", (req, res) => {
+    app.post("api/driver-signup", (req, res) => {
         const newDriver = req.body;
         db.User.findOne({
             where: {

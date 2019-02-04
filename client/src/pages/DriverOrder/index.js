@@ -4,7 +4,7 @@ import axios from "axios";
 function DriverOrder() {
     const id = 1;
     const order = 1;
-    axios.get(`driver:${id}&order:${order}`)
+    axios.get(`api/driver:${id}&order:${order}`)
         .then((response) => {
             console.log(JSON.stringify(response));
         })

@@ -8,7 +8,7 @@ import MapContainer from "../../components/MapContainer";
 
 function DriverOverview() {
     const id = 1;
-    axios.get(`/driver:${/*this.props.*/id}`)
+    axios.get(`api/driver:${/*this.props.*/id}`)
             .then((response) => {
                 console.log("successful");
             })
