@@ -18,7 +18,7 @@ class ClientSignup extends Component {
     
         // Updating the input's state
         this.setState({
-            [name]: value
+            [name]: value.trim()
         });
     };
   
