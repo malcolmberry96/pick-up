@@ -13,7 +13,7 @@
     "heroku-postbuild": "yarn run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Malcolm Berry, Josephine Cortez-Ayala",
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^3.9.1",
@@ -21,6 +21,7 @@
     "bootstrap": "^4.2.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "google-maps-react": "^2.0.2",
     "if-env": "^1.0.4",
     "mysql2": "^1.6.4",
     "passport": "^0.4.0",

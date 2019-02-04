@@ -36,7 +36,7 @@ class ClientOrder extends Component {
             clientId: 9999
         };
         axios.post(
-            "/submit-order",
+            "api/submit-order",
             newOrder
         ).then((response) => {
             console.log(JSON.stringify(response));
@@ -63,7 +63,7 @@ class ClientOrder extends Component {
                           name="startLocation"
                           onChange={this.handleInputChange}
                           type="text"
-                          placeholder="Pick-Up Location"
+                          placeholder="Pick-Up Address"
                           required
                         />
                         <Input
@@ -71,7 +71,7 @@ class ClientOrder extends Component {
                           name="endLocation"
                           onChange={this.handleInputChange}
                           type="text"
-                          placeholder="Drop-off Location"
+                          placeholder="Drop-off Address"
                           required
                         />
                     </Row>
