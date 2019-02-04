@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import {Redirect} from "react-router-dom";
 import axios from "axios";
 
 class ClientSignup extends Component {
 
     state = {
-          firstName: "",
-          lastName: "",
-          email: "",
-          phoneNumber: "",
-          username: "",
-          password: ""
+            successfulSignup: false,
+            firstName: "",
+            lastName: "",
+            email: "",
+            phoneNumber: "",
+            username: "",
+            password: ""
       };
     
     handleInputChange = event => {
@@ -38,7 +40,6 @@ class ClientSignup extends Component {
             "/client-signup",
             newClient
         ).then((response) => {
-            // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
             thisState.setState({
                 firstName: "",
                 lastName: "",
@@ -53,9 +54,13 @@ class ClientSignup extends Component {
         });;
     };
     
-      render() {
-          // Notice how each input has a `value`, `name`, and `onChange` prop
-          return (
+    render() {
+        if(this.state.successfulSignup) {
+            this.setState({successfulSignup: false});
+            return(<Redirect to="/login" />);
+        }
+        else {
+            return (
               <div>
                   <h1>Signup for Pickup</h1>
                   <h3>{(this.state.firstName || this.state.lastName)? `Hello ${this.state.firstName} ${this.state.lastName}` : null}</h3>
@@ -119,8 +124,9 @@ class ClientSignup extends Component {
                       <button onClick={this.handleFormSubmit}>Submit</button>
                   </form>
               </div>
-          );
-      }
+            );
+        }
+    }
 }
 
 export default ClientSignup;
