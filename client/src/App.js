@@ -13,8 +13,8 @@ import DriverSignup from "./pages/DriverSignup";
 import ClientSignup from "./pages/ClientSignup";
 import PickupHome from "./pages/PickupHome";
 import UserLogin from "./pages/UserLogin";
-
-// const socket = io("http://localhost:8000");
+// eslint-disable-next-line
+// const socket = io("http://localhost:3001");
 
 
 class App extends Component {

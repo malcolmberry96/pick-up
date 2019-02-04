@@ -7,8 +7,7 @@ module.exports = function(app) {
     // If the user has valid login credentials, send them to the members page.
     // Otherwise the user will be sent an error
     app.post("/api/login", passport.authenticate("local"), function(req, res) {
-        // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
-        // So we're sending the user back the route to the members page because the redirect will happen on the front end
+        // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request so the redirect will happen on the front end
         // They won't get this or even be able to access this page if they aren't authed
         db.User.findOne({
             where: {
@@ -30,26 +29,9 @@ module.exports = function(app) {
                 return res.json({loginType: "unauthorized"});
             }
         }).catch((err) => {
-            console.log(err);
+            res.status(422).json({error: `${err}`});
         });
     });
-
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
-  // app.post("/api/signup", function(req, res) {
-  //   console.log(req.body);
-  //   db.User.create({
-  //     email: req.body.email,
-  //     password: req.body.password
-  //   }).then(function() {
-  //     res.redirect(307, "/api/login");
-  //   }).catch(function(err) {
-  //     console.log(err);
-  //     res.json(err);
-  //     // res.status(422).json(err.errors[0].message);
-  //   });
-  // });
 
   // // Route for logging user out
   // app.get("/logout", function(req, res) {
@@ -72,8 +54,82 @@ module.exports = function(app) {
   //     });
   //   }
   // });
+    
+    // get driver overview
+    app.get("/api/driver:id", (req, res) => {
+        const driverId = req.params.id;
+            db.Order.findAll({
+                where: {driver_id: driverId}
+            }).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(err);
+                res.status(422).json(err.errors[0].message)
+            });
+    });
+
+    // get specific driver order
+    app.get("/api/driver:id&order:order", (req, res) => {
+        const params = req.params;
+            db.Order.findOne({
+                where: {
+                    driver_id: params.driverId,
+                    id: params.order
+                }
+            }).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(err);
+                res.status(422).json(err.errors[0].message)
+            });
+    });
+
+    // get dispatch overview
+    app.get("/dispatch/dispatch-overview", (req, res) => {
+        db.Driver.findAll()
+            .then((response) => {
+                console.log(response);
+                db.Order.findAll()
+                    .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(err);
+                    res.status(422).json(err.errors[0].message)
+                });
+            })
+            .catch((error) => {
+                console.log(err);
+                res.status(422).json(err.errors[0].message)
+            });
+    });
+
+    // get list of drivers
+    app.get("/dispatch/dispatch-drivers", (req, res) => {
+        db.Driver.findAll()
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(err);
+                res.status(422).json(err.errors[0].message)
+            });
+    });
+
+    // get list of vehicles
+    app.get("/dispatch/dispatch-vehicles", (req, res) => {
+        db.Vehicle.findAll()
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(err);
+                res.status(422).json(err.errors[0].message)
+            });
+    });
+
     //order submit route
-    app.post("/submit-order", (req, res) => {
+    app.post("api/submit-order", (req, res) => {
         const newOrder = req.body;
         console.log(newOrder);
         // db.Order.create({
@@ -94,7 +150,7 @@ module.exports = function(app) {
     });
   
     // client signup route
-    app.post("/client-signup", (req, res) => {
+    app.post("api/client-signup", (req, res) => {
         const newClient = req.body;
         db.User.findOne({
             where: {
@@ -117,7 +173,8 @@ module.exports = function(app) {
                 }).then((_) => {
                     res.json({success: "Your account was successfully created."});
                 }).catch((err) => {
-                    res.json({error: `There was an error creating new user: ${err}`});
+                    console.log(err);
+                    res.status(422).json(err.errors[0].message)
                 });
             } else {
                 res.json({warning: "That username already exists. Please choose a new username."});
@@ -128,7 +185,7 @@ module.exports = function(app) {
     });
   
     // driver signup route
-    app.post("/driver-signup", (req, res) => {
+    app.post("api/driver-signup", (req, res) => {
         const newDriver = req.body;
         db.User.findOne({
             where: {
@@ -160,7 +217,8 @@ module.exports = function(app) {
                 }).then((_) => {
                     res.json({success: "Your account was successfully created."});
                 }).catch((err) => {
-                    res.json({error: `There was an error creating new user: ${err}`});
+                    console.log(err);
+                    res.status(422).json(err.errors[0].message)
                 });
             } else {
                 res.json({warning: "That username already exists. Please choose a new username."});

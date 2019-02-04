@@ -13,7 +13,7 @@
     "heroku-postbuild": "yarn run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Malcolm Berry, Josephine Cortez-Ayala",
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^3.9.1",
