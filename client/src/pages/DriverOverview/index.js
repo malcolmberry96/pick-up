@@ -1,8 +1,6 @@
 import React from "react";
 import MapContainer from "../../components/MapContainer";
-// import GoogleMap from './DoctorsMap';
-// import DoctorsMap from './DoctorsMap'
-// import DoctorsMapContainer from './DoctorMapContainer';
+
 
 
 function DriverOverview() {
