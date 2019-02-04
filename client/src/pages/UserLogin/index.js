@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
 class UserLogin extends Component {
 
     state = {
@@ -9,15 +8,15 @@ class UserLogin extends Component {
         password: ""
       };
     
-      handleInputChange = event => {
+    handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
         const { name, value } = event.target;
     
         // Updating the input's state
         this.setState({
-          [name]: value
+            [name]: value
         });
-      };
+    };
     
     handleFormSubmit = event => {
         // Preventing the default behavior of the form submit (which is to refresh the page)
@@ -42,34 +41,38 @@ class UserLogin extends Component {
         });
     };
     
-      render() {
+    render() {
         // Notice how each input has a `value`, `name`, and `onChange` prop
         return (
-          <div>
-            <h1>Login to Pickup</h1>
-            <p>
-              Hello {this.state.firstName} {this.state.lastName}
-            </p>
-            <form className="form">
-              <input
-                value={this.state.username}
-                name="username"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Username"
-              />
-              <input
-                value={this.state.password}
-                name="password"
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Password"
-                />
-              <button onClick={this.handleFormSubmit}>Submit</button>
-            </form>
-          </div>
+            <div>
+                <h1>Login to Pickup</h1>
+                <p>
+                  Hello {this.state.firstName} {this.state.lastName}
+                </p>
+                <form className="form">
+                    <input
+                        value={this.state.username}
+                        name="username"
+                        onChange={this.handleInputChange}
+                        type="text"
+                        placeholder="Username"
+                        autocomplete="username"
+                        required
+                    />
+                    <input
+                        value={this.state.password}
+                        name="password"
+                        onChange={this.handleInputChange}
+                        type="text"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        required
+                    />
+                    <button onClick={this.handleFormSubmit}>Submit</button>
+                </form>
+            </div>
         );
-      }
+    }
 }
 
 export default UserLogin;

@@ -1,12 +1,21 @@
 import React from "react";
+import GoogleMap from './DoctorsMap';
+import DoctorsMap from './DoctorsMap'
+import DoctorsMapContainer from './DoctorMapContainer';
+
 
 function DriverOverview() {
     return(
         <div>
-            <h1>Driver Main Overview</h1>
-            <p>Map goes here.</p>
-            <p>Customer order list goes here.</p>
+            
+            <DoctorsMapContainer>
+            <GoogleMap></GoogleMap>
+                <DoctorsMap></DoctorsMap>
+            </DoctorsMapContainer>
+            
+
         </div>
+           
     );
 }
 
