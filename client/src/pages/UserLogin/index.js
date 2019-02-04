@@ -36,9 +36,9 @@ class UserLogin extends Component {
                 username: "",
                 password:""
             });
-            console.log(response);
+            console.log(JSON.stringify(response));
         }).catch((error) => {
-            console.log(error);
+            console.log(JSON.stringify(error));
         });
     };
     
