@@ -16,13 +16,12 @@ class DispatchVehicles extends Component {
         return (
         <div>
             <h1>Dispatch Vehicles</h1>
-            
-            <Collection header="Driver Names">
-            <CollectionItem>Driver 1</CollectionItem>
-            <CollectionItem>Driver 2</CollectionItem>
-            <CollectionItem>Driver 3</CollectionItem>
-            <CollectionItem>Driver 4</CollectionItem>
-            <CollectionItem>Driver 6</CollectionItem>
+            <Collection header="Vehicles">
+            <CollectionItem>Vehicle 1 </CollectionItem>
+            <CollectionItem>Vehicle 2</CollectionItem>
+            <CollectionItem>Vehicle 3</CollectionItem>
+            <CollectionItem>Vehicle 4</CollectionItem>
+            <CollectionItem>Vehicle 6</CollectionItem>
         </Collection>
         </div>
     );

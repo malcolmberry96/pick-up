@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
 import MapContainer from "../../components/MapContainer";
-// import GoogleMap from './DoctorsMap';
-// import DoctorsMap from './DoctorsMap'
-// import DoctorsMapContainer from './DoctorMapContainer';
+{/*import style.css from "./style.css"*/}
+
 
 
 function DriverOverview() {
