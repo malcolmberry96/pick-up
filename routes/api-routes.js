@@ -55,6 +55,35 @@ module.exports = function(app) {
   //   }
   // });
     
+    // get driver overview
+    app.get("/driver:id", (req, res) => {
+        const driverId = req.params.id;
+            db.Order.findAll({
+                where: {driver_id: driverId}
+            }).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(err);
+                res.status(422).json(err.errors[0].message)
+            });
+    });
+
+    // get specific driver order
+    app.get("/driver:id&order:order", (req, res) => {
+        const params = req.params;
+            db.Order.findOne({
+                where: {
+                    driver_id: params.driverId,
+                    id: params.order
+                }
+            }).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(err);
+                res.status(422).json(err.errors[0].message)
+            });
+    });
+
     // get dispatch overview
     app.get("/dispatch-overview", (req, res) => {
         db.Driver.findAll()
