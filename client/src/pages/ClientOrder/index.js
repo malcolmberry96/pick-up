@@ -11,11 +11,8 @@ class ClientOrder extends Component {
           startLocation: "",
           endLocation: "",
           loadDescription: "",
-          vehicleRequirement: "",
-          status: "",
-          clientId: "",
-          driverId: ""
-      };
+          vehicleRequirement: ""
+    };
     
     handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
@@ -35,9 +32,8 @@ class ClientOrder extends Component {
             endLocation: this.state.endLocation,
             loadDescritpion: this.state.loadDescritpion,
             vehicleRequirement: this.state.vehicleRequirement,
-            status: this.state.status,
-            clientId: this.state.clientId,
-            driverId: this.state.driverId
+            status: "pending",
+            clientId: 9999
         };
         axios.post(
             "/submit-order",
@@ -48,10 +44,7 @@ class ClientOrder extends Component {
                 startLocation: "",
                 endLocation: "",
                 loadDescritpion: "",
-                vehicleRequirement: "",
-                status: "",
-                clientId: "",
-                driverId: ""
+                vehicleRequirement: ""
             });
         }).catch((error) => {
             console.log(JSON.stringify(error));
@@ -62,9 +55,7 @@ class ClientOrder extends Component {
         // Notice how each input has a `value`, `name`, and `onChange` prop
         return (
             <div>
-                {/* <p>
-                    Hello {this.state.firstName} {this.state.lastName}
-                </p>*/}
+                <h1>Submit a New Order</h1>
                 <form className="form">
                     <Row>
                         <Input
@@ -73,6 +64,7 @@ class ClientOrder extends Component {
                           onChange={this.handleInputChange}
                           type="text"
                           placeholder="Pick-Up Location"
+                          required
                         />
                         <Input
                           value={this.state.endLocation}
@@ -80,21 +72,24 @@ class ClientOrder extends Component {
                           onChange={this.handleInputChange}
                           type="text"
                           placeholder="Drop-off Location"
+                          required
                         />
                     </Row>
+                    <Input 
+                      value={this.state.loadDescription}
+                      name="loadDescription"
+                      onChange={this.handleInputChange}
+                      type="text"
+                      placeholder="Load Description"
+                      required
+                    />
                     <Input 
                       value={this.state.vehicleRequirement}
                       name="vehicleRequirement"
                       onChange={this.handleInputChange}
                       type="text"
                       placeholder="Vehicle Requirement"
-                    />
-                    <Input 
-                      value={this.state.vehicleRequirement}
-                      name="loadDescription"
-                      onChange={this.handleInputChange}
-                      type="text"
-                      placeholder="Load Description"
+                      required
                     />
                     <Button onClick={this.handleFormSubmit}>Submit</Button>
                 </form>
