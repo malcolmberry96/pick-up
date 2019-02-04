@@ -1,34 +1,36 @@
 // setting up express app with http server for socket io setup
 const express = require("express");
 const app = express();
-const http = require("http").Server(app);
-const io = require("socket.io")(http);
+const path = require("path");
+// const http = require("http").Server(app);
+// const io = require("socket.io")(http);
 
 //passport dependencies
 const session = require("express-session");
 const passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
-let PORT = process.env.PORT || 8080;
+let PORT = process.env.PORT || 3001;
 const db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "client/build")));
+}
 // We need to use sessions to keep track of our user's login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our routes
-require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
-require("./routes/sockets.js")(io, app);
+// require("./routes/sockets.js")(io, app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
-  http.listen(PORT, function() {
+  app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
@@ -88,18 +90,4 @@ db.sequelize.sync().then(function() {
 //     association: db.Vehicle.Driver,
 //     include: [db.Driver.User]
 //   }]
-// });
-
-//how to add client to db with user credentials
-// db.Client.create({
-//   first_name: "John",
-//     last_name: "Doe",
-//     phone_number: "999-999-9999",
-//     user: {
-//       username: "johnD1234",
-//       password: "password",
-//       user_type: "client"
-//     }
-// }, {
-//   include: [db.Client.User]
 // });
