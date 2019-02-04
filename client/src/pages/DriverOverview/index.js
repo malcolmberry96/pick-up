@@ -1,19 +1,19 @@
 import React from "react";
-import GoogleMap from './DoctorsMap';
-import DoctorsMap from './DoctorsMap'
-import DoctorsMapContainer from './DoctorMapContainer';
+import MapContainer from "../../components/MapContainer";
+// import GoogleMap from './DoctorsMap';
+// import DoctorsMap from './DoctorsMap'
+// import DoctorsMapContainer from './DoctorMapContainer';
 
 
 function DriverOverview() {
     return(
         <div>
-            
-            <DoctorsMapContainer>
+            <h1>Dispatch Main Overview</h1>
+            <MapContainer />
+            {/* <DoctorsMapContainer>
             <GoogleMap></GoogleMap>
                 <DoctorsMap></DoctorsMap>
-            </DoctorsMapContainer>
-            
-
+            </DoctorsMapContainer> */}
         </div>
            
     );

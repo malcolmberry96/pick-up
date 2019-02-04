@@ -15,15 +15,19 @@ module.exports = function(app) {
                 username: req.body.username
             }
         }).then((response) => {
-            const userType = response.dataValues.user_type;
-            console.log(userType);
-            switch(userType) {
-                case "driver":
-                    return res.redirect("/driver");
-                case "clident":
-                    return res.redirect("/submit-order");
-                case "dispatch":
-                    return res.redirect("/dispatch");
+            if(response !== null) {
+                const userType = response.dataValues.user_type;
+                console.log(userType);
+                switch(userType) {
+                    case "driver":
+                        return res.json({loginType: "driver"});
+                    case "client":
+                        return res.json({loginType: "client"});
+                    case "dispatch":
+                        return res.json({loginType: "dispatch"});
+                }
+            } else {
+                return res.json({loginType: "unauthorized"});
             }
         }).catch((err) => {
             console.log(err);
