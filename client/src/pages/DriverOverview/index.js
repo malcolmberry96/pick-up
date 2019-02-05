@@ -4,8 +4,6 @@ import MapContainer from "../../components/MapContainer";
 import DeliveryTable from "../../components/DeliveryTable";
 import "./style.css";
 
-
-
 function DriverOverview() {
     const id = 1;
     axios.get(`api/driver:${/*this.props.*/id}`)
@@ -17,7 +15,7 @@ function DriverOverview() {
             });
     return(
         <div>
-            <h1>Dispatch Main Overview</h1>
+            <h1>Driver Window</h1>
             <MapContainer />
             {/* <DoctorsMapContainer>
             <GoogleMap></GoogleMap>
@@ -29,6 +27,6 @@ function DriverOverview() {
         </div>
            
     );
-}
+};
 
 export default DriverOverview;
