@@ -11,10 +11,10 @@ export default class DeliveryTable extends Component {
     <Table striped bordered hover>
         <thead>
             <tr>
-                <th>#</th>
+                <th>Order #</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Username</th>
+                <th>Phone No.</th>
             </tr>
         </thead>
              <tbody>
@@ -22,18 +22,19 @@ export default class DeliveryTable extends Component {
                 <td>1</td>
                 <td>Mark</td>
                 <td>Otto</td>
-                <td>@mdo</td>
+                <td>123-456-7890</td>
                 </tr>
                 <tr>
                 <td>2</td>
-                <td>Jacob</td>
-            <td>Thornton</td>
-             <td>@fat</td>
+                <td>James </td>
+                <td>Harden</td>
+                <td>567-456-2345</td>
         </tr>
         <tr>
                 <td>3</td>
-                <td colSpan="2">Larry the Bird</td>
-                <td>@twitter</td>
+                <td>Larry</td>
+                <td>Bird</td>
+                <td>456-908-7896</td>
             </tr>
         </tbody>
     </Table>;
