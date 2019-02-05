@@ -3,6 +3,8 @@ import axios from "axios";
 import {Button} from 'react-materialize';
 import {Input} from 'react-materialize';
 import {Row} from 'react-materialize';
+import {option} from 'react-materialize';
+
 import "./style.css";
 
 class ClientOrder extends Component {
@@ -83,15 +85,43 @@ class ClientOrder extends Component {
                       placeholder="Load Description"
                       required
                     />
-                    <Input 
+                {/* <Row>
+                    <Input s={12} type='select' label='Materialize Select' defaultValue='2'>
+                    <option 
                       value={this.state.vehicleRequirement}
                       name="vehicleRequirement"
                       onChange={this.handleInputChange}
-                      type="text"
+                      type="select"
                       placeholder="Vehicle Requirement"
                       required
-                    />
-                    <Button onClick={this.handleFormSubmit}>Submit</Button>
+                     >Light Duty</option>
+                     <option 
+                      value={this.state.vehicleRequirement}
+                      name="vehicleRequirement"
+                      onChange={this.handleInputChange}
+                      type="select"
+                      placeholder="Vehicle Requirement"
+                      required
+                     >Standard Duty</option>
+                      <option 
+                      value={this.state.vehicleRequirement}
+                      name="vehicleRequirement"
+                      onChange={this.handleInputChange}
+                      type="select"
+                      placeholder="Vehicle Requirement"
+                      required
+                     >Standard Duty</option>
+                    </Input>
+                </Row> */}
+
+                <Row>
+                    <Input s={12} type='select' label='Materialize Select' icon='weekend' defaultValue='2'>
+                    <option value='1'>Option 1</option>
+                    <option value='2'>Option 2</option>
+                    <option value='3'>Option 3</option>
+                    </Input>
+                </Row>
+                <Button onClick={this.handleFormSubmit}>Submit</Button>
                 </form>
             </div>
         );
