@@ -4,8 +4,6 @@ import MapContainer from "../../components/MapContainer";
 import DeliveryTable from "../../components/DeliveryTable";
 import "./style.css";
 
-
-
 function DriverOverview() {
     const id = 1;
     axios.get(`api/driver:${/*this.props.*/id}`)
@@ -29,6 +27,6 @@ function DriverOverview() {
         </div>
            
     );
-}
+};
 
 export default DriverOverview;
