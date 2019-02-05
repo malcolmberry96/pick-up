@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {Redirect} from "react-router-dom";
+import {Button} from 'react-materialize';
+import {Input} from 'react-materialize';
+import {Row} from 'react-materialize';
+import "./style.css"
 
 class UserLogin extends Component {
 
@@ -90,11 +94,12 @@ class UserLogin extends Component {
             return (
                 <div>
                     <h1>Login to Pickup</h1>
-                    <p>
+                    <h5>
                     Hello {this.state.firstName} {this.state.lastName}
-                    </p>
+                    </h5>
                     <form className="form">
-                        <input
+                    <Row>
+                        <Input
                             value={this.state.username}
                             name="username"
                             onChange={this.handleInputChange}
@@ -103,7 +108,7 @@ class UserLogin extends Component {
                             autoComplete="username"
                             required
                         />
-                        <input
+                        <Input
                             value={this.state.password}
                             name="password"
                             onChange={this.handleInputChange}
@@ -112,7 +117,8 @@ class UserLogin extends Component {
                             autoComplete="current-password"
                             required
                         />
-                        <button onClick={this.handleFormSubmit}>Submit</button>
+                        </Row>
+                        <Button variant="primary" onClick={this.handleFormSubmit}>Submit</Button>
                     </form>
                 </div>
             );

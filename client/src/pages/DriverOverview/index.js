@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import MapContainer from "../../components/MapContainer";
-// eslint-disable-next-line
-{/*import style.css from "./style.css"*/}
+import DeliveryTable from "../../components/DeliveryTable";
+import "./style.css";
 
 
 
@@ -19,10 +19,9 @@ function DriverOverview() {
         <div>
             <h1>Dispatch Main Overview</h1>
             <MapContainer />
-            {/* <DoctorsMapContainer>
-            <GoogleMap></GoogleMap>
-                <DoctorsMap></DoctorsMap>
-            </DoctorsMapContainer> */}
+            <div>
+            <DeliveryTable />
+            </div>
         </div>
            
     );
