@@ -1,9 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MapContainer from "../../components/MapContainer";
-{/*import style.css from "./style.css"*/}
-
-
+/*import style.css from "./style.css"*/
 
 function DriverOverview() {
     const id = 1;
@@ -25,6 +23,6 @@ function DriverOverview() {
         </div>
            
     );
-}
+};
 
 export default DriverOverview;
