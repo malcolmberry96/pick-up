@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Route, Switch} from "react-router-dom"; 
+import { GoogleApiWrapper } from 'google-maps-react';
 // import io from "socket.io-client";
 
 //page imports
@@ -17,7 +18,7 @@ import UserLogin from "./pages/UserLogin";
 // const socket = io("http://localhost:3001");
 
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <Switch>
@@ -30,10 +31,12 @@ class App extends Component {
         <Route exact path="/dispatch/vehicles" component={DispatchVehicle}/>
         <Route exact path="/dispatch/drivers" component={DispatchDrivers}/>
         <Route path="/driver/order:id" component={DriverOrder}/>
-        <Route path="/submit-order" component={ClientOrder}/>
+        <Route path="/submit-order" render={(props) => <ClientOrder {...props} google={this.props.google}/>} />
       </Switch>
     );
   }
 }
 
-export default App;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyCJ7S7yZRVxrerAXxamcQpUP0TD4DjHy04'
+})(App);

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MapContainer from "../../components/MapContainer";
+// eslint-disable-next-line
 {/*import style.css from "./style.css"*/}
 
 

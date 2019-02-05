@@ -1,0 +1,11 @@
+#infowindow-content .title {
+    font-weight: bold;
+}
+
+#infowindow-content {
+    display: none;
+}
+
+#infowindow-content {
+    display: inline;
+}
