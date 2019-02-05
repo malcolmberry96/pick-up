@@ -3,6 +3,7 @@ import axios from "axios";
 import {Collection} from 'react-materialize';
 import {CollectionItem} from 'react-materialize';
 import "./style.css";
+import DriverVehicle from "../../components/DriverVehicle";
 
 class DispatchVehicles extends Component {
     render () {
@@ -15,14 +16,8 @@ class DispatchVehicles extends Component {
             });
         return (
         <div>
-            <h1>Dispatch Vehicles</h1>
-            <Collection header="Vehicles">
-            <CollectionItem>Vehicle 1 </CollectionItem>
-            <CollectionItem>Vehicle 2</CollectionItem>
-            <CollectionItem>Vehicle 3</CollectionItem>
-            <CollectionItem>Vehicle 4</CollectionItem>
-            <CollectionItem>Vehicle 6</CollectionItem>
-        </Collection>
+        <h1>Driver Overview</h1>
+         <DriverVehicle></DriverVehicle>
         </div>
     );
     }

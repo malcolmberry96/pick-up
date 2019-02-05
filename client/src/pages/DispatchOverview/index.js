@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import MapContainer from "../../components/MapContainer";
 import DeliveryTable from "../../components/DeliveryTable"
+import DriverVehicle from "../../components/DriverVehicle";
+
 
 function DispatchOverview() {
     axios.get("/dispatch/dispatch-overview")
