@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
 import axios from "axios";
+import {Button} from 'react-materialize';
+import {Input} from 'react-materialize';
+import {Row} from 'react-materialize';
 
+ 
 class ClientSignup extends Component {
 
     state = {
@@ -65,8 +69,10 @@ class ClientSignup extends Component {
                   <h1>Signup for Pickup</h1>
                   <h3>{(this.state.firstName || this.state.lastName)? `Hello ${this.state.firstName} ${this.state.lastName}` : null}</h3>
                   <form className="form">
-                      <p>Personal Information</p>
-                      <input
+                  
+                      <h5>Personal Information</h5>
+                    <Row>
+                      <Input
                         value={this.state.firstName}
                         name="firstName"
                         onChange={this.handleInputChange}
@@ -75,7 +81,7 @@ class ClientSignup extends Component {
                         autoComplete="given-name"
                         required
                       />
-                      <input
+                      <Input
                         value={this.state.lastName}
                         name="lastName"
                         onChange={this.handleInputChange}
@@ -84,7 +90,7 @@ class ClientSignup extends Component {
                         autoComplete="family-name"
                         required
                       />
-                      <input 
+                      <Input
                         value={this.state.email}
                         name="email"
                         onChange={this.handleInputChange}
@@ -93,7 +99,7 @@ class ClientSignup extends Component {
                         autoComplete="email"
                         required
                       />
-                      <input 
+                      <Input
                         value={this.state.phoneNumber}
                         name="phoneNumber"
                         onChange={this.handleInputChange}
@@ -102,8 +108,9 @@ class ClientSignup extends Component {
                         autoComplete="tel"
                         required
                       />
-                      <p>Account Information</p>
-                      <input
+                      </Row>
+                      <h5>Account Information</h5>
+                      <Input
                         value={this.state.username}
                         name="username"
                         onChange={this.handleInputChange}
@@ -112,7 +119,7 @@ class ClientSignup extends Component {
                         autoComplete="username"
                         required
                       />
-                      <input
+                      <Input
                         value={this.state.password}
                         name="password"
                         onChange={this.handleInputChange}
@@ -121,7 +128,7 @@ class ClientSignup extends Component {
                         autoComplete="new-password"
                         required
                       />
-                      <button onClick={this.handleFormSubmit}>Submit</button>
+                      <Button onClick={this.handleFormSubmit}>Submit</Button>
                   </form>
               </div>
             );
