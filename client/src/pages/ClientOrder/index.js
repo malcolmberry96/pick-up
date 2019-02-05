@@ -3,7 +3,7 @@ import axios from "axios";
 import {Button} from 'react-materialize';
 import {Input} from 'react-materialize';
 import {Row} from 'react-materialize';
-import {option} from 'react-materialize';
+import Form from 'react-bootstrap/Form';
 
 import "./style.css";
 
@@ -114,13 +114,51 @@ class ClientOrder extends Component {
                     </Input>
                 </Row> */}
 
-                <Row>
-                    <Input s={12} type='select' label='Materialize Select' icon='weekend' defaultValue='2'>
-                    <option value='1'>Option 1</option>
-                    <option value='2'>Option 2</option>
-                    <option value='3'>Option 3</option>
-                    </Input>
-                </Row>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                      <Form.Label>Load Size</Form.Label>
+                      <Form.Control as="select">
+                        <option 
+                        value={this.state.vehicleRequirement}
+                        name="vehicleRequirement"
+                        onChange={this.handleInputChange}
+                        type="select"
+                        placeholder="Vehicle Requirement"
+                        required
+                        >MiniCompact</option>
+                        <option 
+                        value={this.state.vehicleRequirement}
+                        name="vehicleRequirement"
+                        onChange={this.handleInputChange}
+                        type="select"
+                        placeholder="Vehicle Requirement"
+                        required
+                        >SubCompact</option>
+                        <option
+                        value={this.state.vehicleRequirement}
+                        name="vehicleRequirement"
+                        onChange={this.handleInputChange}
+                        type="select"
+                        placeholder="Vehicle Requirement"
+                        required
+                        >Compact</option>
+                        <option
+                        value={this.state.vehicleRequirement}
+                        name="vehicleRequirement"
+                        onChange={this.handleInputChange}
+                        type="select"
+                        placeholder="Vehicle Requirement"
+                        required
+                        >Mid-Size</option>
+                        <option
+                        value={this.state.vehicleRequirement}
+                        name="vehicleRequirement"
+                        onChange={this.handleInputChange}
+                        type="select"
+                        placeholder="Vehicle Requirement"
+                        required
+                        >Large</option>
+                      </Form.Control>
+                    </Form.Group>
                 <Button onClick={this.handleFormSubmit}>Submit</Button>
                 </form>
             </div>
