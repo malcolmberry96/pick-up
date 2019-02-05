@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
 import MapContainer from "../../components/MapContainer";
+import DeliveryTable from "../../components/DeliveryTable"
+import DriverVehicle from "../../components/DriverVehicle";
+
 
 function DispatchOverview() {
     axios.get("/dispatch/dispatch-overview")
@@ -12,9 +15,9 @@ function DispatchOverview() {
             });
     return(
         <div>
-            <h1>Dispatch Main Overview</h1>
+            <h1>Dispatch Overview</h1>
             <MapContainer />
-            <p>Order go here.</p>
+            <DeliveryTable />
         </div>
     );
 }
