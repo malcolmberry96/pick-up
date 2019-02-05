@@ -73,10 +73,10 @@ class DriverSignup extends Component {
         // Notice how each input has a `value`, `name`, and `onChange` prop
         return (
             <div>
-                <p> Drivers Sign up here</p>
+                <h1> Drivers Sign up here</h1>
                 <form className="form">
+                <h6>Personal Information</h6>
                     <Row>
-                        <p>Personal Information</p>
                         <Input
                             value={this.state.firstName}
                             name="firstName"
@@ -105,8 +105,8 @@ class DriverSignup extends Component {
                         autoComplete="tel"
                         required
                     />
+                    <h6>Vehicle Information</h6>
                     <Row>
-                        <p>Vehicle Information</p>
                         <Input 
                             value={this.state.vehicleMake}
                             name="vehicleMake"
@@ -149,8 +149,8 @@ class DriverSignup extends Component {
                             placeholder="Licence Plate #"
                             required
                         />
-                    </Row>
-                    <p>Account Information</p>
+                </Row>
+                <h6>Account Information</h6>
                     <Input
                         value={this.state.username}
                         name="username"
