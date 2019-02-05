@@ -75,7 +75,7 @@ class DriverSignup extends Component {
             <div>
                 <h1> Drivers Sign up here</h1>
                 <form className="form">
-                <h6>Personal Information</h6>
+                <h5>Personal Information</h5>
                     <Row>
                         <Input
                             value={this.state.firstName}
@@ -105,7 +105,7 @@ class DriverSignup extends Component {
                         autoComplete="tel"
                         required
                     />
-                    <h6>Vehicle Information</h6>
+                    <h5>Vehicle Information</h5>
                     <Row>
                         <Input 
                             value={this.state.vehicleMake}
@@ -150,7 +150,7 @@ class DriverSignup extends Component {
                             required
                         />
                 </Row>
-                <h6>Account Information</h6>
+                <h5>Account Information</h5>
                     <Input
                         value={this.state.username}
                         name="username"
