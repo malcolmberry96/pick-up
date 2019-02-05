@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import MapContainer from "../../components/MapContainer";
-{/*import style.css from "./style.css"*/}
+import DeliveryTable from "../../components/DeliveryTable";
+import "./style.css";
 
 
 
@@ -22,6 +23,9 @@ function DriverOverview() {
             <GoogleMap></GoogleMap>
                 <DoctorsMap></DoctorsMap>
             </DoctorsMapContainer> */}
+            <div>
+            <DeliveryTable />
+            </div>
         </div>
            
     );
