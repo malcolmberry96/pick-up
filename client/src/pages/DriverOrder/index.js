@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import DeliveryTable from "../../components/DeliveryTable";
+
 
 function DriverOrder() {
     const id = 1;
@@ -13,8 +15,7 @@ function DriverOrder() {
         });
     return(
         <div>
-            <h1>Driver View of Order No. 12343</h1>
-            <p>Order info goes here.</p>
+           <DeliveryTable />
         </div>
     );
 }

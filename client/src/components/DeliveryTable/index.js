@@ -11,29 +11,41 @@ export default class DeliveryTable extends Component {
     <Table striped bordered hover>
         <thead>
             <tr>
-                <th>#</th>
+                <th>Order #</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Username</th>
+                <th>Address</th>
+                <th>Phone Number</th>
             </tr>
         </thead>
-             <tbody>
-                <tr>
+        <tbody>
+            <tr>
                 <td>1</td>
                 <td>Mark</td>
                 <td>Otto</td>
-                <td>@mdo</td>
+                <td>56 Random Ave.</td>
+                <td>654-690-4322</td>
                 </tr>
-                <tr>
+            <tr>
                 <td>2</td>
                 <td>Jacob</td>
-            <td>Thornton</td>
-             <td>@fat</td>
-        </tr>
-        <tr>
+                <td>Thornton</td>
+                <td>3432 Random Dr.</td>
+                <td>456-309-0987</td>
+            </tr>
+            <tr>
                 <td>3</td>
-                <td colSpan="2">Larry the Bird</td>
-                <td>@twitter</td>
+                <td>Larry</td>
+                <td>The Bird</td>
+                <td>2222 Cool St.</td>
+                <td>123-456-78990</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Mike</td>
+                <td>Dantoni</td>
+                <td>123 Random St.</td>
+                <td>123-456-7890</td>
             </tr>
         </tbody>
     </Table>;
