@@ -9,6 +9,23 @@ With Pick-Up, we aim to birng on-demand trucking into the 21st century with a co
 size, keep track of them using Google Maps, and eliminate the outdated scheduled pick-up format. If you're a hotshot driver, this application
 allows you to sign up and make quick money picking up and dropping off local orders around you. 
 
+# Front-End Technologies
+
+- React.js
+- Materialize for React
+- Bootstrap for React 
+
+# Back-End Technologies 
+
+- React/Redux
+- Socet.io 
+- Sequelize
+- Passport.js
+- MySQL 
+- Yarn 
+- NPM 
+
+
 # Screenshots
 
 <img width="1277" alt="screen shot 2019-02-06 at 11 20 13 am" src="https://user-images.githubusercontent.com/39191969/52361255-6fc59900-2a03-11e9-8113-cee13749c16e.png">
