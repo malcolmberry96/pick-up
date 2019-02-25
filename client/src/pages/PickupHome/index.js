@@ -37,7 +37,7 @@ class Pickup extends Component {
             <h3>
             Pick-Up 
             </h3>
-              <h8>Schedule a hotshot pick up</h8>
+              <h8>Schedule a hotshot pick up.</h8>
             <p>
       <Button variant='primary'>Schedule</Button>
         </p>
